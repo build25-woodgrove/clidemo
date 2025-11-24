@@ -43,10 +43,9 @@ jobs:
 
         run: |
           echo ${{secrets.DOCKER_PASSWORD_CONTAINERS}} | docker login --username ${{secrets.DOCKER_USERNAME_CONTAINERS}} --password-stdin ${{secrets.DOCKER_REGISTRY_CONTAINERS}}
-          docker build -t ${{vars.IMAGE_NAME}} .
-          docker tag ${{vars.IMAGE_NAME}} ${{secrets.DOCKER_REGISTRY_CONTAINERS}}/yonitestgithub:V${{github.run_number}}
-          docker tag ${{vars.IMAGE_NAME}} ${{vars.IMAGE_TARGET}}:latest
-          docker push  ${{secrets.DOCKER_REGISTRY_CONTAINERS}}/yonitestgithub:V${{github.run_number}}
+          docker build -t test-image-woodgrove .
+          docker tag test-image-woodgrove ${{secrets.DOCKER_REGISTRY_CONTAINERS}}/yonitestgithubwoodgrove:V${{github.run_number}}
+          docker push  ${{secrets.DOCKER_REGISTRY_CONTAINERS}}/yonitestgithubwoodgrove:V${{github.run_number}}
           curl -L -o defender https://cli.dfd.security.stage.azure-test.net/public/latest/Defender_linux-x64
           chmod +x defender
           ./defender scan image ${{secrets.DOCKER_REGISTRY_CONTAINERS}}/yonitestgithub:V${{github.run_number}}
