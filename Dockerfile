@@ -1,2 +1,2 @@
 FROM vuln/testdocker
-RUN echo test2 > out.out
+RUN echo test3 > out.out
