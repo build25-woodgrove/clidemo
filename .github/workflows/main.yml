@@ -48,5 +48,5 @@ jobs:
           docker push  ${{secrets.DOCKER_REGISTRY_CONTAINERS}}/yonitestgithubwoodgrove:V${{github.run_number}}
           curl -L -o defender https://cli.dfd.security.stage.azure-test.net/public/latest/Defender_linux-x64
           chmod +x defender
-          ./defender scan image ${{secrets.DOCKER_REGISTRY_CONTAINERS}}/yonitestgithub:V${{github.run_number}}
+          ./defender scan image ${{secrets.DOCKER_REGISTRY_CONTAINERS}}/yonitestgithubwoodgrove:V${{github.run_number}}
           
